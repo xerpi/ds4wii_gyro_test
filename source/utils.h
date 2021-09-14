@@ -4,10 +4,8 @@
 #include <gccore.h>
 #include <ogc/machine/processor.h>
 
-
 #define VID 0x054C
 #define PID 0x05C4
-
 
 struct ds4_input {
     u8 report_ID;
@@ -85,9 +83,6 @@ struct ds4_input {
     
 } __attribute__((packed, aligned(32)));
 
-
-int r, g , b;
-
 int get_device_id();
 int open_device(int id);
 int leds_rumble(int fd, int r, int g, int b);
@@ -104,6 +99,9 @@ int change_notify_cb(int result, void *usrdata);
 
 void WiiResetPressed();
 void WiiPowerPressed();
-int run;
+
+extern int run;
+extern int r, g , b;
+
 
 #endif

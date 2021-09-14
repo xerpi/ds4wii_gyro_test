@@ -60,15 +60,13 @@ int main(int argc, char **argv)
         if (data.finger2active) {
             GRRLIB_Circle((screenW/1920.0f)*data.finger2X, (screenH/940.0f)*data.finger2Y, 10, 0x0000FFFF, 1);
         }
+
+        char buf[256];
+        snprintf(buf, sizeof(buf), "aX: %8hi  aY: %8hi  aZ: %8hi", data.accelX, data.accelY, data.accelZ);
+        GRRLIB_PrintfTTF(15, 30, font, buf, 14, 0xFFFFFFFF);
         
-        
-        /*char buf1[256];
-        sprintf(buf1, "aX: %8hi  aY: %8hi  aZ: %8hi", data.accelX, data.accelY, data.accelZ);
-        char buf2[256];
-        sprintf(buf2, "gyroX: %8hi  gyroY: %8hi  gyroZ: %8hi", data.gyroX, data.gyroY, data.gyroZ);
-        GRRLIB_PrintfTTF(15, 30, font, buf1, 14, 0xFFFFFFFF);
-        GRRLIB_PrintfTTF(15, 45, font, buf2, 14, 0xFFFFFFFF);
-        */
+        snprintf(buf, sizeof(buf), "gyroX: %8hi  gyroY: %8hi  gyroZ: %8hi", data.gyroX, data.gyroY, data.gyroZ);
+        GRRLIB_PrintfTTF(15, 45, font, buf, 14, 0xFFFFFFFF);
         
         #define THRESHOLD 50.0f
         if (fabs(data.accelX) > THRESHOLD)

@@ -153,10 +153,7 @@ int leds_rumble(int fd, int r, int g, int b)
 
 int random_leds(int fd)
 {
-    r = rand()%0xFF;
-    g = rand()%0xFF;
-    b = rand()%0xFF;
-    return leds_rumble(fd, r, g, b);
+    return leds_rumble(fd, rand()%0xFF, rand()%0xFF, rand()%0xFF);
 }
 
 int open_device(int id)
